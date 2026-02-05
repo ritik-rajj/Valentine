@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion'
 
 /**
- * ReceiptCard - Thermal Paper Receipt Component
+ * ReceiptCard - "The Roast Receipt" Edition
  *
- * DESIGN PHILOSOPHY:
- * - Mimics actual thermal paper receipts (slightly off-white, thin lines)
- * - Serrated edges at top/bottom for authentic "tear-off" look
- * - Monospace font for that POS printer aesthetic
- * - Subtle paper texture effect
+ * DESIGN: Same thermal paper aesthetic but with CHAOTIC energy
+ * - Funny/roasting stats instead of generic romantic
+ * - "Toxic but obsessed" love level
+ * - Gen Z humor throughout
  *
- * This is the core "shareable" element - must look perfect in screenshots.
+ * This is THE shareable element. The roast factor = virality.
  */
 
 export default function ReceiptCard({ partnerName, startDate, stats }) {
@@ -30,7 +29,7 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
       <div className="receipt-paper px-6 py-8 border-l-2 border-r-2 border-[#8B0000]/10">
         {/* Header */}
         <header className="text-center border-b-2 border-dashed border-[#8B0000]/30 pb-4 mb-4">
-          {/* Logo/Title */}
+          {/* Logo/Title - more chaotic */}
           <motion.h1
             className="font-display font-extrabold text-3xl text-[#8B0000] tracking-tight"
             initial={{ opacity: 0, y: -10 }}
@@ -40,17 +39,19 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
             LOVE.ZIP
           </motion.h1>
           <p className="text-[#8B0000]/60 text-xs mt-1 tracking-widest">
-            RELATIONSHIP RECEIPT
+            ✨ THE EXPOSÉ ✨
           </p>
 
-          {/* Decorative bow */}
-          <motion.span
-            className="inline-block text-2xl mt-2"
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
+          {/* Chaos emojis */}
+          <motion.div
+            className="flex justify-center gap-2 mt-2 text-xl"
+            animate={{ rotate: [0, 2, -2, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            🎀
-          </motion.span>
+            <span>🎀</span>
+            <span>💀</span>
+            <span>🎀</span>
+          </motion.div>
         </header>
 
         {/* Receipt metadata */}
@@ -60,15 +61,15 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
             <span>{new Date().toLocaleDateString()}</span>
           </div>
           <div className="flex justify-between">
-            <span>RECEIPT #:</span>
+            <span>CASE #:</span>
             <span>{receiptNumber}</span>
           </div>
           <div className="flex justify-between">
-            <span>CUSTOMER:</span>
+            <span>SUSPECT:</span>
             <span className="font-bold">{partnerName.toUpperCase()}</span>
           </div>
           <div className="flex justify-between">
-            <span>SINCE:</span>
+            <span>CRIME STARTED:</span>
             <span>{formattedDate}</span>
           </div>
         </div>
@@ -76,10 +77,10 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
         {/* Divider */}
         <div className="border-t border-dashed border-[#8B0000]/30 my-4" />
 
-        {/* Stats items */}
+        {/* Stats items - THE ROAST */}
         <div className="space-y-3">
           <p className="text-[#8B0000]/60 text-xs tracking-widest text-center mb-3">
-            -- RELATIONSHIP STATS --
+            -- CHARGES FILED --
           </p>
 
           {stats.map((stat, index) => (
@@ -101,30 +102,38 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
         {/* Divider */}
         <div className="border-t border-dashed border-[#8B0000]/30 my-4" />
 
-        {/* Total section */}
+        {/* Total section - THE VERDICT */}
         <div className="font-receipt">
           <div className="flex justify-between text-sm font-bold text-[#8B0000]">
             <span>LOVE LEVEL:</span>
             <motion.span
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              className="text-[#FF69B4]"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
             >
-              ∞ / ∞
+              Toxic but obsessed 🎀
             </motion.span>
           </div>
+          <div className="flex justify-between text-xs text-[#8B0000]/70 mt-2">
+            <span>VERDICT:</span>
+            <span className="text-[#FF69B4] font-bold">GUILTY of being cute</span>
+          </div>
           <div className="flex justify-between text-xs text-[#8B0000]/70 mt-1">
-            <span>STATUS:</span>
-            <span className="text-[#FF69B4] font-bold">FOREVER</span>
+            <span>SENTENCE:</span>
+            <span className="font-bold">LIFE (no parole)</span>
           </div>
         </div>
 
         {/* Divider */}
         <div className="border-t border-[#8B0000]/20 my-4" />
 
-        {/* Footer message */}
+        {/* Footer message - chaotic */}
         <footer className="text-center">
-          <p className="text-[#8B0000]/60 text-xs italic mb-3">
-            "Thank you for choosing me."
+          <p className="text-[#8B0000]/60 text-xs italic mb-1">
+            "I hate how much I love u"
+          </p>
+          <p className="text-[#8B0000]/40 text-[10px] mb-3">
+            - the management
           </p>
 
           {/* Barcode */}
@@ -133,6 +142,11 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
           {/* Receipt number under barcode */}
           <p className="text-[#8B0000]/40 text-[10px] mt-2 tracking-[0.3em]">
             {receiptNumber}
+          </p>
+
+          {/* Extra chaotic detail */}
+          <p className="text-[#FF69B4]/60 text-[8px] mt-2 font-bold">
+            NO REFUNDS • NO EXCHANGES • UR STUCK W ME
           </p>
         </footer>
       </div>
@@ -150,9 +164,7 @@ export default function ReceiptCard({ partnerName, startDate, stats }) {
 }
 
 /**
- * ReceiptLineItem - Individual stat row
- *
- * Styled like actual receipt items with dots between label and value.
+ * ReceiptLineItem - Individual stat row with roast styling
  */
 function ReceiptLineItem({ stat }) {
   return (
@@ -180,10 +192,7 @@ function ReceiptLineItem({ stat }) {
 }
 
 /**
- * SerratedEdge - Realistic torn paper edge
- *
- * Creates the characteristic zig-zag pattern of thermal paper.
- * Uses SVG for crisp rendering at any scale.
+ * SerratedEdge - Torn paper edge
  */
 function SerratedEdge({ position }) {
   const isTop = position === 'top'
@@ -198,7 +207,6 @@ function SerratedEdge({ position }) {
       }}
     >
       <defs>
-        {/* Paper gradient to match receipt body */}
         <linearGradient id={`paperGrad-${position}`} x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#FFF5EE" />
           <stop offset="100%" stopColor="#FFFAF5" />
@@ -217,18 +225,14 @@ function SerratedEdge({ position }) {
 
 /**
  * Barcode - Decorative receipt barcode
- *
- * Generates pseudo-random bars based on receipt number for visual consistency.
- * Not a real scannable barcode, just for aesthetic.
  */
 function Barcode({ data }) {
-  // Generate bar widths from data string
   const bars = data.split('').map((char, i) => {
     const code = char.charCodeAt(0)
     return {
       id: i,
-      width: (code % 3) + 1, // 1-3 width
-      gap: (code % 2) + 1    // 1-2 gap
+      width: (code % 3) + 1,
+      gap: (code % 2) + 1
     }
   })
 

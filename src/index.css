@@ -49,6 +49,12 @@ body {
   font-family: 'Courier Prime', 'Courier New', monospace;
 }
 
+/* Pixel font for that retro Y2K/gaming vibe */
+.font-pixel {
+  font-family: 'VT323', 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+
 /* Prevent pull-to-refresh on mobile during shake interaction */
 .no-overscroll {
   overscroll-behavior: none;
